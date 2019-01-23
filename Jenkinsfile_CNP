@@ -6,13 +6,13 @@ import uk.gov.hmcts.contino.Environment
 
 Environment environment = new Environment(env)
 
-slackChannel = "#snl-master-builds"
+slackChannel = "#am-master-builds"
 
 onMaster {
     try {
         sharedInfrastructurePipeline('am', environment.nonProdName, 'nonprod')
         //sharedInfrastructurePipeline('am', environment.demoName, 'nonprod')
-        //sharedInfrastructurePipeline('snl', environment.prodName, 'prod')
+        //sharedInfrastructurePipeline('am', environment.prodName, 'prod')
         notifyBuildFixed channel: slackChannel
     } catch (err) {
         notifyBuildFailure channel: slackChannel

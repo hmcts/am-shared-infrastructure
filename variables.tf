@@ -2,13 +2,13 @@
 variable "product" {
   type        = "string"
   default     = "am"
-  description = "Scheduling and Listing "
+  description = "Access Management"
 }
 
 variable "component" {
   type        = "string"
   default     = "shared"
-  description = "Scheduling and Listing "
+  description = "Access Management"
 }
 
 variable "env" {
@@ -64,7 +64,7 @@ variable "application_type" {
 variable "team_name" {
   type        = "string"
   description = "The name of your team"
-  default     = "AM"
+  default     = "Access Management"
 }
 
 variable "team_contact" {
