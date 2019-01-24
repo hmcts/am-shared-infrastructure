@@ -14,6 +14,7 @@ slackChannel = '#am-param-builds'
 
 try {
     sharedInfrastructurePipeline(params.PRODUCT_NAME, params.ENVIRONMENT, 'sandbox')
+    sharedInfrastructurePipeline(params.PRODUCT_NAME, params.ENVIRONMENT, 'sprod')
     notifyBuildFixed channel: slackChannel
 } catch (err) {
     notifyBuildFailure channel: slackChannel
