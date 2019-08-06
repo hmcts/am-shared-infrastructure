@@ -1,5 +1,6 @@
 locals {
   common_tags = {
+    environment  = "${var.env}"
     team_name    = "${var.team_name}"
     team_contact = "${var.team_contact}"
   }
@@ -16,4 +17,8 @@ resource "azurerm_resource_group" "rg" {
     "Team Contact" = "${var.team_contact}"
     "Destroy Me" = "${var.destroy_me}"
   }
+}
+
+output "resourceGroup" {
+  value = "${azurerm_resource_group.rg.name}"
 }

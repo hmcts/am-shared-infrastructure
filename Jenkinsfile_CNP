@@ -3,19 +3,10 @@
 @Library("Infrastructure") _
 
 import uk.gov.hmcts.contino.Environment
+import uk.gov.hmcts.contino.Subscription
 
 Environment environment = new Environment(env)
+Subscription subscription = new Subscription(env)
 
-slackChannel = "#am-master-builds"
 
-onMaster {
-    try {
-        sharedInfrastructurePipeline('am', environment.nonProdName, 'nonprod')
-        //sharedInfrastructurePipeline('am', environment.demoName, 'nonprod')
-        //sharedInfrastructurePipeline('am', environment.prodName, 'prod')
-        notifyBuildFixed channel: slackChannel
-    } catch (err) {
-        notifyBuildFailure channel: slackChannel
-        throw err
-    }
-}
+withInfraPipeline('am') {}
