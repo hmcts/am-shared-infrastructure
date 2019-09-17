@@ -2,20 +2,4 @@
 //noinspection GroovyUnusedAssignment
 @Library("Infrastructure") _
 
-import uk.gov.hmcts.contino.Environment
-
-Environment environment = new Environment(env)
-
-slackChannel = "#am-master-builds"
-
-onMaster {
-    try {
-        sharedInfrastructurePipeline('am', environment.nonProdName, 'nonprod')
-        //sharedInfrastructurePipeline('am', environment.demoName, 'nonprod')
-        //sharedInfrastructurePipeline('am', environment.prodName, 'prod')
-        notifyBuildFixed channel: slackChannel
-    } catch (err) {
-        notifyBuildFailure channel: slackChannel
-        throw err
-    }
-}
+withInfraPipeline("am"){}
