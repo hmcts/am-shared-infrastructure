@@ -8,4 +8,5 @@ module "vault" {
   resource_group_name = "${azurerm_resource_group.rg.name}"
   product_group_object_id = "${var.product_group_object_id}"
   managed_identity_object_id = "${var.managed_identity_object_id}"
+  common_tags = "${local.common_tags}"
 }
