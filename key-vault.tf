@@ -10,3 +10,9 @@ module "vault" {
   managed_identity_object_id = "${var.managed_identity_object_id}"
   common_tags = "${local.common_tags}"
 }
+
+resource "azurerm_key_vault_secret" "appInsightsInstrumentationKey" {
+  name = "AppInsightsInstrumentationKey"
+  value = "${azurerm_application_insights.appinsights.instrumentation_key}"
+  key_vault_id = "${module.vault.key_vault_id}"
+}
