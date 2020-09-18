@@ -7,7 +7,7 @@ locals {
 
 // Shared Resource Group
 resource "azurerm_resource_group" "rg" {
-  name     = join("-", [var.product, "shared-infrastructure", var.env])
+  name     = "${var.product}-shared-infrastructure-${var.env}"
   location = var.location
 
   tags {
