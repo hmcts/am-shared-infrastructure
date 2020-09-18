@@ -86,3 +86,7 @@ variable "destroy_me" {
   type        = string
   default     = "false"
 }
+
+variable "common_tags" {
+  type = map(string)
+}
