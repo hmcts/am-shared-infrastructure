@@ -7,10 +7,10 @@ locals {
 
 // Shared Resource Group
 resource "azurerm_resource_group" "rg" {
-  name     = "${var.product}-shared-infrastructure-${var.env}"
-  location = var.location
+  name      = "${var.product}-shared-infrastructure-${var.env}"
+  location  = var.location
 
-  tags {
+  tags      = {
     "Deployment Environment"  = var.env
     "Team Name"               = var.team_name
     "Team Contact"            = var.team_contact
