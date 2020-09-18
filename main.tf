@@ -1,5 +1,6 @@
 locals {
   common_tags = {
+    environment  = var.env
     team_name    = var.team_name
     team_contact = var.team_contact
   }
