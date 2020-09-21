@@ -3,6 +3,7 @@ provider "azurerm" {
 }
 
 provider "azurerm" {
+  alias = "legacy"
   version = "=1.44.0"
 }
 
