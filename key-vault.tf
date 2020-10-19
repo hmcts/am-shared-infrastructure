@@ -1,13 +1,14 @@
 module "vault" {
   source                      = "git@github.com:hmcts/cnp-module-key-vault?ref=azurermv2"
   name                        = join("-", [var.product, var.env])
-  product                     = var.product
+  product                     = join("-", [var.product, "shared"])
   env                         = var.env
   tenant_id                   = var.tenant_id
   object_id                   = var.jenkins_AAD_objectId
   resource_group_name         = azurerm_resource_group.rg.name
   product_group_object_id     = var.product_group_object_id
-  managed_identity_object_id  = var.managed_identity_object_id
+  managed_identity_object_ids = ["${var.managed_identity_object_id}"]
+  create_managed_identity     = true
   common_tags                 = local.common_tags
 }
 
