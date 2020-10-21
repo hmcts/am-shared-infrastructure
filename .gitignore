@@ -1,13 +1,1 @@
-<<<<<<< HEAD
-am-shared-infrastructure*
-bootstrap-creds.json
-cfg-vmimg-store.json
-hashicorp-vault-token
-github-apikey
-.terraform
-.idea/
-*.iml
-.gradle/
-=======
 .idea
->>>>>>> am-1004-master
