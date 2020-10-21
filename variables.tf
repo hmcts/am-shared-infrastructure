@@ -38,11 +38,6 @@ variable "product_group_object_id" {
   description = "dcd_group_accessmanagement_v2"
 }
 
-variable "managed_identity_object_id" {
-  type    = string
-  default = ""
-}
-
 // ASP Specific Variables
 variable "asp_capacity" {
   type    = string
