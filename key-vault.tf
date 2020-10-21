@@ -7,7 +7,6 @@ module "vault" {
   object_id                   = var.jenkins_AAD_objectId
   resource_group_name         = azurerm_resource_group.rg.name
   product_group_object_id     = var.product_group_object_id
-  managed_identity_object_ids = ["${var.managed_identity_object_id}"]
   create_managed_identity     = true
   common_tags                 = local.common_tags
 }
