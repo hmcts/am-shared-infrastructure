@@ -1,9 +1,9 @@
 resource "azurerm_application_insights" "appinsights" {
-  name                  = join("-", [var.product, var.env])
-  location              = var.appinsights_location
-  resource_group_name   = azurerm_resource_group.rg.name
-  application_type      = var.application_type
-  tags                  = local.common_tags
+  name                = join("-", [var.product, var.env])
+  location            = var.appinsights_location
+  resource_group_name = azurerm_resource_group.rg.name
+  application_type    = var.application_type
+  tags                = local.common_tags
 
   lifecycle {
     ignore_changes = [
