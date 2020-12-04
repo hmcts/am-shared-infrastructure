@@ -1,6 +1,6 @@
 #!groovy
 //noinspection GroovyUnusedAssignment
-@Library("Infrastructure@sync-branch-infra-pipeline") _
+@Library("Infrastructure") _
 
 withInfraPipeline("am") {
     // Configure branches to sync with master branch
