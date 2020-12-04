@@ -1,5 +1,11 @@
 #!groovy
 //noinspection GroovyUnusedAssignment
-@Library("Infrastructure") _
+@Library("Infrastructure@sync-branch-infra-pipeline") _
 
-withInfraPipeline("am") {}
+withInfraPipeline("am") {
+    // Configure branches to sync with master branch
+    def branchesToSync = ['demo', 'perftest']
+
+    // Sync demo and perftest with master branch
+    syncBranchesWithMaster(branchesToSync)
+}
