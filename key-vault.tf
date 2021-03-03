@@ -16,3 +16,16 @@ resource "azurerm_key_vault_secret" "appInsightsInstrumentationKey" {
   value         = azurerm_application_insights.appinsights.instrumentation_key
   key_vault_id  = module.vault.key_vault_id
 }
+
+data "azurerm_servicebus_topic_authorization_rule" "rd-caseworker-topic-auth-rule" {
+  name                = "SendAndListenSharedAccessKey"
+  resource_group_name = join("-", ["rd", var.env])
+  namespace_name      = join("-", ["rd", "servicebus", var.env])
+  topic_name          = join("-", ["rd", "caseworker-topic", var.env])
+}
+
+resource "azurerm_key_vault_secret" "caseworker-topic-secondary-send-listen-shared-access-key" {
+  name         = "caseworker-topic-primary-send-listen-shared-access-key"
+  value        = data.azurerm_servicebus_topic_authorization_rule.rd-caseworker-topic-auth-rule.primary_key
+  key_vault_id = module.vault.key_vault_id
+}
