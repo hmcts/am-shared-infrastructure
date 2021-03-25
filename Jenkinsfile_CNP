@@ -18,17 +18,19 @@ withInfraPipeline("am") {
         echo "JOB_BASE_NAME - ${env.JOB_BASE_NAME}"
         echo "BUILD_TAG - ${env.BUILD_TAG}"
 
-        def az = { cmd -> return sh(script: "env AZURE_CONFIG_DIR=/opt/jenkins/.azure-$subscription az $cmd", returnStdout: true).trim() }
+        // def az = { cmd -> return sh(script: "env AZURE_CONFIG_DIR=/opt/jenkins/.azure-$subscription az $cmd", returnStdout: true).trim() }
         def subscriptionName = "subscription-${env.BRANCH_NAME}"
         def serviceBusName = "rd-servicebus-demo"
         def topicName = "rd-caseworker-topic-demo"
         def resourceGroupName = "rd-demo"
         def subscription = "DCD-CNP-DEV"
 
-        String topicId = az "servicebus topic show --name ${topicName} --namespace-name ${serviceBusName} --resource-group ${resourceGroupName} --subscription ${subscription} --query id -o tsv"
-        if (topicId.indexOf('ResourceNotFoundError') == -1) {
-            echo "Topic ID - ${topicId}"
-            String sub = az "servicebus topic subscription create --name ${subscriptionName} --namespace-name ${serviceBusName} --topic-name ${topicName} --resource-group ${resourceGroupName} --subscription ${subscription}"
-        }
+        this.steps.sh "env AZURE_CONFIG_DIR=/opt/jenkins/.azure-$subscription az servicebus topic show --name ${topicName} --namespace-name ${serviceBusName} --resource-group ${resourceGroupName} --subscription ${subscription} --query id -o tsv"
+
+        // String topicId = az "servicebus topic show --name ${topicName} --namespace-name ${serviceBusName} --resource-group ${resourceGroupName} --subscription ${subscription} --query id -o tsv"
+        // if (topicId.indexOf('ResourceNotFoundError') == -1) {
+        //     echo "Topic ID - ${topicId}"
+        //     String sub = az "servicebus topic subscription create --name ${subscriptionName} --namespace-name ${serviceBusName} --topic-name ${topicName} --resource-group ${resourceGroupName} --subscription ${subscription}"
+        // }
     }
 }
