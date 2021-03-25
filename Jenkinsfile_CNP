@@ -25,10 +25,12 @@ withInfraPipeline("am") {
         def resourceGroupName = "rd-demo"
         def subscription = "DCD-CNP-DEV"
 
-        String topicId = az "servicebus topic show --name ${topicName} --namespace-name ${serviceBusName} --resource-group ${resourceGroupName} --subscription ${subscription} --query id -o tsv"
-        if (topicId.indexOf('ResourceNotFoundError') == -1) {
-            echo "Topic ID - ${topicId}"
-            String sub = az "servicebus topic subscription create --name ${subscriptionName} --namespace-name ${serviceBusName} --topic-name ${topicName} --resource-group ${resourceGroupName} --subscription ${subscription}"
-        }
+        echo "Subscription Name - ${subscriptionName}"
+
+        // String topicId = az "servicebus topic show --name ${topicName} --namespace-name ${serviceBusName} --resource-group ${resourceGroupName} --subscription ${subscription} --query id -o tsv"
+        // if (topicId.indexOf('ResourceNotFoundError') == -1) {
+        //     echo "Topic ID - ${topicId}"
+        //     String sub = az "servicebus topic subscription create --name ${subscriptionName} --namespace-name ${serviceBusName} --topic-name ${topicName} --resource-group ${resourceGroupName} --subscription ${subscription}"
+        // }
     }
 }
