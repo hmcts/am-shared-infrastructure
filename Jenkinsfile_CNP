@@ -4,14 +4,16 @@
 
 withInfraPipeline("am") {
     after('checkout') {
-    onMaster {
+    // onMaster {
       withCredentials([usernamePassword(credentialsId: 'jenkins-github-hmcts-api-token', usernameVariable: 'USERNAME', passwordVariable: 'BEARER_TOKEN')]) {
         try {
           
-          def url = "https://api.github.com/repos/hmcts/am-shared-infrastructure/pulls"
-          def response = sh(script: "curl -s $url", returnStdout: true).trim()
+            echo "QUERY API TO RETRIEVE PRs"
+
+            def url = "https://api.github.com/repos/hmcts/am-shared-infrastructure/pulls"
+            def response = sh(script: "curl -s $url", returnStdout: true).trim()
           
-          echo $url
+            echo $url
           
           
         //   sh '''
@@ -27,5 +29,5 @@ withInfraPipeline("am") {
           // notifyBuildEvent channel: '#fpla-tech', color: 'warning', message: 'Failed to update demo or perftest branch'
         }
       }
-    }
+    //}
 }
