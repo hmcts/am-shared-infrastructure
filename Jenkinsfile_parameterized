@@ -23,7 +23,7 @@ withParameterizedInfraPipeline(params.PRODUCT_NAME, params.ENVIRONMENT, 'sandbox
 
         script {
           def url = "https://api.github.com/repos/hmcts/am-shared-infrastructure/pulls"
-          def response = sh(script: "curl -s $url", returnStdout: true).trim()
+          def response = sh(script: "curl -s $url", returnStdout: true).toString().trim()
           echo $url
         }   
       } catch (err) {
