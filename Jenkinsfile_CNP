@@ -4,6 +4,8 @@
 
 withInfraPipeline("am") {
     after('checkout') {
+        echo "AFTER CHECOUT BLOCK"
+
     // onMaster {
       withCredentials([usernamePassword(credentialsId: 'jenkins-github-hmcts-api-token', usernameVariable: 'USERNAME', passwordVariable: 'BEARER_TOKEN')]) {
         try {
