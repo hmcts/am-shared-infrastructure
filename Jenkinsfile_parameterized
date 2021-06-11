@@ -22,9 +22,9 @@ withParameterizedInfraPipeline(params.PRODUCT_NAME, params.ENVIRONMENT, 'sandbox
         echo "QUERY API TO RETRIEVE PRs"
 
         script {
-          def url = "https://api.github.com/repos/hmcts/am-shared-infrastructure/pulls"
-          def response = sh(script: "curl -s $url", returnStdout:true)
-          echo $url
+          url = "https://api.github.com/repos/hmcts/am-shared-infrastructure/pulls"
+          response = sh(script: "curl -s $url", returnStdout:true)
+          echo $response
         }   
       } catch (err) {
 
