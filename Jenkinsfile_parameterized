@@ -13,17 +13,36 @@ properties([
 
 echo "Building AM Shared Infrastructure in environment '${params.ENVIRONMENT}'"
 
-slackChannel = '#am-param-builds'
+withParameterizedInfraPipeline(params.PRODUCT_NAME, params.ENVIRONMENT, 'sandbox', '') {
+  after('checkout') {
+    echo "AFTER CHECKOUT BLOCK"
 
-node {
-  env.PATH = "$env.PATH:/usr/local/bin"
+    withCredentials([usernamePassword(credentialsId: 'jenkins-github-hmcts-api-token', usernameVariable: 'USERNAME', passwordVariable: 'BEARER_TOKEN')]) {
+      try {
+        echo "QUERY API TO RETRIEVE PRs"
 
-  stage('Checkout') {
-    deleteDir()
-    checkout scm
-  }
+            def url = "https://api.github.com/repos/hmcts/am-shared-infrastructure/pulls"
+            def response = sh(script: "curl -s $url", returnStdout: true).trim()
+          
+            echo $url
+      } catch (err) {
 
-  stage('Create shared infrastructure') {
-    sharedInfrastructurePipeline('am', params.ENVIRONMENT, 'sandbox')
+      }
+    }
   }
 }
+
+// slackChannel = '#am-param-builds'
+
+// node {
+//   env.PATH = "$env.PATH:/usr/local/bin"
+
+//   stage('Checkout') {
+//     deleteDir()
+//     checkout scm
+//   }
+
+//   stage('Create shared infrastructure') {
+//     sharedInfrastructurePipeline('am', params.ENVIRONMENT, 'sandbox')
+//   }
+// }
