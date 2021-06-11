@@ -17,8 +17,7 @@ withParameterizedInfraPipeline(params.PRODUCT_NAME, params.ENVIRONMENT, 'sandbox
   after('checkout') {
     echo "AFTER CHECKOUT BLOCK"
 
-    withCredentials([usernamePassword(credentialsId: 'jenkins-github-hmcts-api-token', usernameVariable: 'USERNAME', passwordVariable: 'BEARER_TOKEN')]) {
-      try {
+    try {
         echo "QUERY API TO RETRIEVE PRs"
 
         script {
@@ -26,10 +25,13 @@ withParameterizedInfraPipeline(params.PRODUCT_NAME, params.ENVIRONMENT, 'sandbox
           response = sh(script: "curl -s $url", returnStdout:true)
           echo $response
         }   
-      } catch (err) {
+    } catch (err) {
 
-      }
     }
+
+    // withCredentials([usernamePassword(credentialsId: 'jenkins-github-hmcts-api-token', usernameVariable: 'USERNAME', passwordVariable: 'BEARER_TOKEN')]) {
+      
+    // }
   }
 }
 
