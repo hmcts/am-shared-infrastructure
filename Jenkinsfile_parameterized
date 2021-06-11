@@ -13,7 +13,7 @@ properties([
 
 echo "Building AM Shared Infrastructure in environment '${params.ENVIRONMENT}'"
 
-withParameterizedInfraPipeline(params.PRODUCT_NAME, params.ENVIRONMENT, 'sandbox', '') {
+withParameterizedInfraPipeline(params.PRODUCT_NAME, params.ENVIRONMENT, 'sandbox', true) {
   after('checkout') {
     echo "AFTER CHECKOUT BLOCK"
 
