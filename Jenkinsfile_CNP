@@ -3,6 +3,13 @@
 @Library("Infrastructure") _
 
 withInfraPipeline("am") {
+
+    echo "QUERY API TO RETRIEVE PRs"
+
+    def url = "https://api.github.com/repos/hmcts/am-shared-infrastructure/pulls"
+    def response = sh(script: "curl -s $url", returnStdout: true).trim()
+    echo $url
+
     after('checkout') {
         echo "AFTER CHECOUT BLOCK"
 
