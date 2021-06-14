@@ -26,17 +26,19 @@ withParameterizedInfraPipeline(params.PRODUCT_NAME, params.ENVIRONMENT, 'sandbox
         //   echo $response
         // }
 
-        def response = steps.httpRequest(
-        consoleLogResponseBody: true,
-        authentication: steps.env.GIT_CREDENTIALS_ID,
-        timeout: 10,
-        url: "https://raw.githubusercontent.com/hmcts/cnp-jenkins-config/master/environment-approvals.yml",
-        validResponseCodes: '200'
-      )
-      environmentApprovals = steps.readYaml(text: response.content)
+        def response = httpRequest "https://api.github.com/repos/hmcts/am-shared-infrastructure/pulls"
 
-      echo environmentApprovals
-      
+        // def response = httpRequest(
+        //   consoleLogResponseBody: true,
+        //   authentication: env.GIT_CREDENTIALS_ID,
+        //   timeout: 10,
+        //   url: "https://api.github.com/repos/hmcts/am-shared-infrastructure/pulls",
+        //   validResponseCodes: '200'
+        // )
+        // environmentApprovals = steps.readYaml(text: response.content)
+
+      echo response.content
+
     } catch (err) {
 
     }
