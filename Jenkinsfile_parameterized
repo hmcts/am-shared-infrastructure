@@ -29,9 +29,8 @@ withParameterizedInfraPipeline(params.PRODUCT_NAME, params.ENVIRONMENT, 'sandbox
         // }
 
         def response = httpRequest "https://api.github.com/repos/hmcts/am-shared-infrastructure/pulls"
-        def jsonObj = jsonSlurper.parseText(response.trim())
-
-        echo jsonObj
+        def pullJsonObj = jsonSlurper.parseText(response)
+        echo pullJsonObj
 
 
         // def response = httpRequest(
