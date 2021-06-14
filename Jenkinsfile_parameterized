@@ -2,6 +2,8 @@
 //noinspection GroovyUnusedAssignment
 @Library("Infrastructure") _
 
+import groovy.json.JsonSlurper
+
 //noinspection GroovyAssignabilityCheck
 properties([
 		parameters([
@@ -27,6 +29,10 @@ withParameterizedInfraPipeline(params.PRODUCT_NAME, params.ENVIRONMENT, 'sandbox
         // }
 
         def response = httpRequest "https://api.github.com/repos/hmcts/am-shared-infrastructure/pulls"
+        def jsonObj = jsonSlurper.parseText(response.trim())
+
+        echo jsonObj
+
 
         // def response = httpRequest(
         //   consoleLogResponseBody: true,
@@ -37,7 +43,7 @@ withParameterizedInfraPipeline(params.PRODUCT_NAME, params.ENVIRONMENT, 'sandbox
         // )
         // environmentApprovals = steps.readYaml(text: response.content)
 
-      echo response.content
+        // echo response.content
 
     } catch (err) {
 
