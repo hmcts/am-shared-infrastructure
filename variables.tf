@@ -78,8 +78,8 @@ variable "team_contact" {
 
 // Other
 variable "destroy_me" {
-  type        = string
-  default     = "false"
+  type    = string
+  default = "false"
 }
 
 variable "common_tags" {

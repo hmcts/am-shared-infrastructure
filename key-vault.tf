@@ -12,9 +12,9 @@ module "vault" {
 }
 
 resource "azurerm_key_vault_secret" "appInsightsInstrumentationKey" {
-  name          = "AppInsightsInstrumentationKey"
-  value         = azurerm_application_insights.appinsights.instrumentation_key
-  key_vault_id  = module.vault.key_vault_id
+  name         = "AppInsightsInstrumentationKey"
+  value        = azurerm_application_insights.appinsights.instrumentation_key
+  key_vault_id = module.vault.key_vault_id
 }
 
 data "azurerm_servicebus_topic_authorization_rule" "rd-caseworker-topic-auth-rule" {
