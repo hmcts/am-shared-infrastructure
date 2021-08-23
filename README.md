@@ -15,3 +15,4 @@ This module sets up the shared infrastructure and other shared items for Access 
 ### Output
 
 - `vaultName` The name of the key vault.
+- `vaultUri` The URL of the key vault.
