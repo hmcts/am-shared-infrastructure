@@ -38,17 +38,6 @@ variable "product_group_object_id" {
   description = "dcd_group_accessmanagement_v2"
 }
 
-// ASP Specific Variables
-variable "asp_capacity" {
-  type    = string
-  default = "1"
-}
-
-variable "asp_sku_size" {
-  type    = string
-  default = "I2"
-}
-
 // AppInsights
 // as of now, UK South is unavailable for Application Insights
 variable "appinsights_location" {
