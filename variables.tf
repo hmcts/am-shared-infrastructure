@@ -65,6 +65,30 @@ variable "team_contact" {
   default     = "#am-team"
 }
 
+variable "application" {
+  type        = string
+  description = "The name of the application"
+  default     = "access-management"
+}
+
+variable "business_area" {
+  type        = string
+  description = "The name of your Slack channel people can use to contact your team about your infrastructure"
+  default     = "CFT"
+}
+
+variable "built_from" {
+  type        = string
+  description = "The name or URL of repository"
+  default     = "https://github.com/hmcts/am-shared-infrastructure"
+}
+
+variable "expires_after" {
+  type        = string
+  description = "The name of your Slack channel people can use to contact your team about your infrastructure"
+  default     = "3000-01-01"
+}
+
 // Other
 variable "destroy_me" {
   type    = string

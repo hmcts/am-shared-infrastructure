@@ -3,6 +3,10 @@ locals {
     environment  = var.env
     team_name    = var.team_name
     team_contact = var.team_contact
+    application = var.application
+    businessArea = var.business_area
+    builtFrom = var.built_from
+    expiresAfter = var.expires_after
   }
 }
 
