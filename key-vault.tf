@@ -17,6 +17,12 @@ resource "azurerm_key_vault_secret" "appInsightsInstrumentationKey" {
   key_vault_id = module.vault.key_vault_id
 }
 
+resource "azurerm_key_vault_secret" "app_insights_connection_string" {
+  name         = "app-insights-connection-string"
+  value        = azurerm_application_insights.appinsights.connection_string
+  key_vault_id = module.vault.key_vault_id
+}
+
 data "azurerm_servicebus_topic_authorization_rule" "rd-caseworker-topic-auth-rule" {
   name                = "SendAndListenSharedAccessKey"
   resource_group_name = join("-", ["rd", var.env])
