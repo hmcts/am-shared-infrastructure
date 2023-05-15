@@ -51,42 +51,12 @@ variable "application_type" {
 }
 
 // TAG SPECIFIC VARIABLES
-variable "team_name" {
-  type        = string
-  description = "The name of your team"
-  default     = "Access Management"
-}
-
 variable "team_contact" {
   type        = string
   description = "The name of your Slack channel people can use to contact your team about your infrastructure"
   default     = "#am-team"
 }
 
-variable "application" {
-  type        = string
-  description = "The name of the application"
-  default     = "access-management"
-}
-
-variable "business_area" {
-  type        = string
-  description = "The area of the business the application belongs to"
-  default     = "CFT"
-}
-
-variable "built_from" {
-  type        = string
-  description = "The name or URL of repository"
-  default     = "https://github.com/hmcts/am-shared-infrastructure"
-}
-
-// Other
-variable "destroy_me" {
-  type    = string
-  default = "false"
-}
-
 variable "common_tags" {
-  type = map(string)
+  type = map
 }
