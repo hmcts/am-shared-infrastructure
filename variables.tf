@@ -65,6 +65,24 @@ variable "team_contact" {
   default     = "#am-team"
 }
 
+variable "application" {
+  type        = string
+  description = "The name of the application"
+  default     = "access-management"
+}
+
+variable "business_area" {
+  type        = string
+  description = "The area of the business the application belongs to"
+  default     = "CFT"
+}
+
+variable "built_from" {
+  type        = string
+  description = "The name or URL of repository"
+  default     = "https://github.com/hmcts/am-shared-infrastructure"
+}
+
 // Other
 variable "destroy_me" {
   type    = string
