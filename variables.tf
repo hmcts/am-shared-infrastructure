@@ -38,11 +38,9 @@ variable "product_group_object_id" {
   description = "dcd_group_accessmanagement_v2"
 }
 
-// AppInsights
-// as of now, UK South is unavailable for Application Insights
 variable "appinsights_location" {
   type        = string
-  default     = "West Europe"
+  default     = "UK South"
   description = "Location for Application Insights"
 }
 
