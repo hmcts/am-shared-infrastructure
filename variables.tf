@@ -83,12 +83,6 @@ variable "built_from" {
   default     = "https://github.com/hmcts/am-shared-infrastructure"
 }
 
-variable "expires_after" {
-  type        = string
-  description = "The expiry date of the resource"
-  default     = "3000-01-01"
-}
-
 // Other
 variable "destroy_me" {
   type    = string
