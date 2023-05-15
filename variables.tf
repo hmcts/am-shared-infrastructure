@@ -73,7 +73,7 @@ variable "application" {
 
 variable "business_area" {
   type        = string
-  description = "The name of your Slack channel people can use to contact your team about your infrastructure"
+  description = "The area of the business the application belongs to"
   default     = "CFT"
 }
 
@@ -85,7 +85,7 @@ variable "built_from" {
 
 variable "expires_after" {
   type        = string
-  description = "The name of your Slack channel people can use to contact your team about your infrastructure"
+  description = "The expiry date of the resource"
   default     = "3000-01-01"
 }
 
