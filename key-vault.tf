@@ -9,6 +9,7 @@ module "vault" {
   product_group_object_id = var.product_group_object_id
   create_managed_identity = true
   common_tags             = local.tags
+  additional_managed_identities_access = var.additional_managed_identities_access
 }
 
 resource "azurerm_key_vault_secret" "appInsightsInstrumentationKey" {

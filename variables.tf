@@ -60,3 +60,8 @@ variable "team_contact" {
 variable "common_tags" {
   type = map
 }
+
+variable "additional_managed_identities_access" {
+  type        = list(string)
+  description = "The name of your application"
+}
