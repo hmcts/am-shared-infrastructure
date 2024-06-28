@@ -58,7 +58,7 @@ variable "team_contact" {
 }
 
 variable "common_tags" {
-  type = map
+  type = map(any)
 }
 
 variable "additional_managed_identities_access" {
