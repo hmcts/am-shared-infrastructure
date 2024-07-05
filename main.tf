@@ -1,6 +1,6 @@
 locals {
   tags = merge(var.common_tags,
-    tomap({team_contact = var.team_contact})
+    tomap({ team_contact = var.team_contact })
   )
 }
 
