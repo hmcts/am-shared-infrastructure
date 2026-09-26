@@ -66,3 +66,9 @@ variable "additional_managed_identities_access" {
   description = "The name of your application"
   default     = []
 }
+
+variable "sampling_percentage" {
+  description = "Specifies the sampling percentage for Application Insights. null uses default value from terraform-module-application-insights."
+  type        = number
+  default     = null
+}
