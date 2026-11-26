@@ -1,5 +1,5 @@
 module "vault" {
-  source                               = "git@github.com:hmcts/cnp-module-key-vault?ref=DTSPO-31965/remove-jenkins-ptl-access"
+  source                               = "git@github.com:hmcts/cnp-module-key-vault?ref=master"
   name                                 = join("-", [var.product, var.env])
   product                              = join("-", [var.product, "shared"])
   env                                  = var.env
